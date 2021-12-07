@@ -1,4 +1,4 @@
-import 'package:find_home/src/models/common.dart';
+import 'package:find_home/src/models/room.dart';
 import 'package:find_home/src/widgets/house_card/room_item.dart';
 import 'package:flutter/material.dart';
 

@@ -1,4 +1,4 @@
-import 'package:find_home/src/models/common.dart';
+import 'package:find_home/src/models/home_infos.dart';
 import 'package:find_home/src/widgets/house_card/house_card_footer.dart';
 import 'package:find_home/src/widgets/common/like_toggle_button.dart';
 import 'package:flutter/material.dart';

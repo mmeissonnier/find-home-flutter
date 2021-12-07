@@ -1,4 +1,4 @@
-import 'package:find_home/src/models/common.dart';
+import 'package:find_home/src/models/home_infos.dart';
 import 'package:find_home/src/models/house_list.dart';
 import 'package:find_home/src/widgets/house_card/house_card.dart';
 import 'package:find_home/src/globals.dart';

@@ -1,6 +1,10 @@
 import 'package:find_home/src/models/house_list.dart';
+import 'package:find_home/src/models/price.dart';
+import 'package:find_home/src/models/rating.dart';
+import 'package:find_home/src/models/room.dart';
+import 'package:find_home/src/models/user.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:find_home/src/models/common.dart';
+import 'package:find_home/src/models/home_infos.dart';
 
 void main() {
   HomeInfos home = HomeInfos(

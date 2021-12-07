@@ -1,4 +1,4 @@
-import 'package:find_home/src/models/common.dart';
+import 'package:find_home/src/models/room.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

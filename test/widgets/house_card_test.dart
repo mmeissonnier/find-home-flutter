@@ -1,4 +1,8 @@
-import 'package:find_home/src/models/common.dart';
+import 'package:find_home/src/models/home_infos.dart';
+import 'package:find_home/src/models/price.dart';
+import 'package:find_home/src/models/rating.dart';
+import 'package:find_home/src/models/room.dart';
+import 'package:find_home/src/models/user.dart';
 import 'package:find_home/src/widgets/common/like_toggle_button.dart';
 import 'package:find_home/src/widgets/house_card/house_card.dart';
 import 'package:flutter/material.dart';

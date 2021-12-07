@@ -1,6 +1,7 @@
+import 'package:find_home/src/models/rating.dart';
+import 'package:find_home/src/models/user.dart';
 import 'package:find_home/src/widgets/house_card/rating_stars.dart';
 import 'package:flutter/material.dart';
-import 'package:find_home/src/models/common.dart';
 
 class UserInfosTiny extends StatelessWidget {
   final User user;

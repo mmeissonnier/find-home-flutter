@@ -1,4 +1,7 @@
-import 'package:find_home/src/models/common.dart';
+import 'package:find_home/src/models/home_infos.dart';
+import 'package:find_home/src/models/price.dart';
+import 'package:find_home/src/models/room.dart';
+import 'package:find_home/src/models/user.dart';
 import 'package:find_home/src/widgets/house_card/rooms_info.dart';
 import 'package:find_home/src/widgets/house_card/user_infos_tiny.dart';
 import 'package:flutter/material.dart';

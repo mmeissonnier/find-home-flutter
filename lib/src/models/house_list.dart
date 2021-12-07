@@ -1,4 +1,4 @@
-import 'package:find_home/src/models/common.dart';
+import 'package:find_home/src/models/home_infos.dart';
 import 'package:flutter/material.dart';
 
 class HouseListModel extends ChangeNotifier {

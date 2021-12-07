@@ -1,5 +1,5 @@
+import 'package:find_home/src/models/rating.dart';
 import 'package:flutter/material.dart';
-import 'package:find_home/src/models/common.dart';
 import 'package:flutter_svg/svg.dart';
 
 class RatingStars extends StatelessWidget {
