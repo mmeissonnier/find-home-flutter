@@ -59,6 +59,10 @@ class HouseFullInfos extends StatelessWidget {
                     child: const Text('Reserve now'),
                     padding:
                         const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
+                    material: (_, __) => MaterialElevatedButtonData(
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.resolveWith(
+                                (states) => theme?.colorScheme.secondary))),
                     cupertino: (_, __) => CupertinoElevatedButtonData(
                         originalStyle: true,
                         color: theme?.colorScheme.secondary),

@@ -1,5 +1,6 @@
 import 'package:find_home/src/models/home_infos.dart';
 import 'package:find_home/src/widgets/common/like_toggle_button.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
@@ -19,11 +20,14 @@ class HouseCard extends StatelessWidget {
       this.footerBuilder})
       : super(key: key);
 
+  Color getColor(Set<MaterialState> states) {
+    return Colors.transparent;
+  }
+
   Widget _imageWrapper({required Widget child}) => onPressed != null
-      ? PlatformElevatedButton(
+      ? CupertinoButton(
           padding: const EdgeInsets.only(top: 90),
-          cupertino: (_, __) => CupertinoElevatedButtonData(
-              color: Colors.transparent, originalStyle: true),
+          color: Colors.transparent,
           onPressed: () {
             if (onPressed != null) {
               onPressed!(data.id);
