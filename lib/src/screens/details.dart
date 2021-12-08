@@ -1,4 +1,5 @@
 import 'package:find_home/src/controllers/house_list_controller.dart';
+import 'package:find_home/src/globals.dart';
 import 'package:find_home/src/widgets/house_details/house_details.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -19,7 +20,16 @@ class _DetailsScreenState extends State<DetailsScreen> {
     return ChangeNotifierProvider.value(
         value: _controller.houseListModel,
         child: HouseDetails(
+            theme: themeData,
+            onLiked: (id, selected) {
+              _controller.updateFavorite(id, selected);
+            },
             data: _controller.houseListModel.houseList
                 .singleWhere((element) => element.id == widget.houseId)));
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 }

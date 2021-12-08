@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const String apiBasePath = "192.168.0.20:8000";
+const String apiBasePath = 'find-home-api.herokuapp.com';
 
 const colorScheme = ColorScheme(
     primary: Color(0xFF143656),
@@ -53,6 +53,11 @@ const textTheme = TextTheme(
         fontFamily: 'Rubik',
         fontWeight: FontWeight.normal,
         fontSize: 20),
+    headline4: TextStyle(
+        color: Color(0xFF143656),
+        fontFamily: 'Rubik',
+        fontWeight: FontWeight.normal,
+        fontSize: 26),
     subtitle1: TextStyle(
         color: Colors.black38,
         fontFamily: 'RubikLight',

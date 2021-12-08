@@ -9,9 +9,11 @@ class HomeInfos {
   final Price price;
   final List<Room> rooms;
   final User owner;
-  bool? isFavorite;
-  String? pictureURL;
-  Location? location;
+  List<String> tags;
+  String description;
+  bool isFavorite;
+  String pictureURL;
+  Location location;
 
   static List<Room> createRoomList(Map data) {
     var list = List<Room>.empty(growable: true);
@@ -34,14 +36,23 @@ class HomeInfos {
       required this.owner,
       bool? isFavorite,
       String? pictureURL,
+      List<String>? tags,
+      String? description,
       Location? location})
       : pictureURL = pictureURL ?? '',
-        isFavorite = isFavorite ?? false;
+        isFavorite = isFavorite ?? false,
+        tags = tags ?? [],
+        location = location ?? const Location(),
+        description = description ?? '';
+
   HomeInfos.fromJson(Map data)
       : id = int.parse(data['id'].toString()),
         name = data['name'] ?? '',
         price = Price.fromJson(data['price']),
         owner = User.fromJson(data['owner']),
+        tags = List.from(['tags']),
+        description = data['description'] ?? '',
+        location = Location.fromJson(data['location']),
         isFavorite = data['isFavorite'] == true,
         pictureURL = data['pictureURL'] ?? '',
         rooms = HomeInfos.createRoomList(data);

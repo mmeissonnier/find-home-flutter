@@ -1,5 +1,4 @@
 import 'package:find_home/src/models/home_infos.dart';
-import 'package:find_home/src/widgets/house_card/house_card_footer.dart';
 import 'package:find_home/src/widgets/common/like_toggle_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
@@ -7,85 +6,86 @@ import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 class HouseCard extends StatelessWidget {
   final HomeInfos data;
   final ThemeData? theme;
-  final void Function(int id, bool selected) onLiked;
+  final Widget Function()? footerBuilder;
+  final void Function(int id, bool selected)? onLiked;
   final void Function(int id)? onPressed;
 
   const HouseCard(
       {Key? key,
       required this.data,
       this.theme,
-      required this.onLiked,
-      this.onPressed})
+      this.onLiked,
+      this.onPressed,
+      this.footerBuilder})
       : super(key: key);
+
+  Widget _imageWrapper({required Widget child}) => onPressed != null
+      ? PlatformElevatedButton(
+          padding: const EdgeInsets.only(top: 90),
+          cupertino: (_, __) => CupertinoElevatedButtonData(
+              color: Colors.transparent, originalStyle: true),
+          onPressed: () {
+            if (onPressed != null) {
+              onPressed!(data.id);
+            }
+          },
+          child: child)
+      : Padding(padding: const EdgeInsets.only(top: 90), child: child);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        color: Colors.transparent,
-        height: 350,
+    return Hero(
+        tag: 'house-card-${data.id}',
+        transitionOnUserGestures: true,
         child: Stack(alignment: Alignment.bottomCenter, children: [
           Transform.translate(
               offset: const Offset(0, -90),
-              child: PlatformElevatedButton(
-                  padding: EdgeInsets.zero,
-                  cupertino: (_, __) => CupertinoElevatedButtonData(
-                      color: Colors.transparent, originalStyle: true),
-                  onPressed: () {
-                    if (onPressed != null) {
-                      onPressed!(data.id);
-                    }
-                  },
+              child: _imageWrapper(
                   child: ClipRRect(
-                      borderRadius:
-                          const BorderRadius.vertical(top: Radius.circular(20)),
-                      child: Hero(
-                        tag: 'house-image-${data.id}',
-                        transitionOnUserGestures: true,
-                        child: Image.network(
-                          data.pictureURL ?? '',
-                          errorBuilder: (context, error, stackTrace) =>
-                              const Text('😢'),
-                          frameBuilder: (context, child, frame,
-                                  wasSynchronouslyLoaded) =>
-                              frame == null
-                                  ? Container(
-                                      child: const CircularProgressIndicator(),
-                                      height: 260,
-                                      alignment: Alignment.center,
-                                      color: const Color.fromARGB(5, 0, 0, 0))
-                                  : AnimatedOpacity(
-                                      child: child,
-                                      opacity: 1,
-                                      duration: const Duration(seconds: 1),
-                                      curve: Curves.easeOut,
-                                    ),
-                          fit: BoxFit.cover,
-                          height: 260,
-                          width: double.infinity,
-                          alignment: AlignmentDirectional.center,
-                        ),
-                      )))),
+                borderRadius:
+                    const BorderRadius.vertical(top: Radius.circular(20)),
+                child: Image.network(
+                  data.pictureURL,
+                  errorBuilder: (context, error, stackTrace) =>
+                      const Text('😢'),
+                  frameBuilder:
+                      (context, child, frame, wasSynchronouslyLoaded) =>
+                          Stack(children: [
+                    Visibility(
+                        visible: frame == null,
+                        child: Container(
+                            child: const CircularProgressIndicator(),
+                            height: 260,
+                            alignment: Alignment.center,
+                            color: const Color.fromARGB(5, 0, 0, 0))),
+                    AnimatedOpacity(
+                      child: child,
+                      opacity: frame == null ? 0 : 1,
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeOut,
+                    )
+                  ]),
+                  fit: BoxFit.cover,
+                  height: double.infinity,
+                  width: double.infinity,
+                  alignment: AlignmentDirectional.center,
+                ),
+              ))),
           Stack(
             alignment: Alignment.topRight,
             children: [
               Padding(
                   padding: const EdgeInsets.only(top: 20),
-                  child: HouseCardFooter(
-                    theme: theme,
-                    user: data.owner,
-                    rooms: data.rooms,
-                    name: data.name,
-                    price: data.price,
-                    onPressLike: (selected) {
-                      onLiked(data.id, selected);
-                    },
-                  )),
+                  child:
+                      footerBuilder != null ? footerBuilder!() : Container()),
               Transform.translate(
                   offset: const Offset(-30, 0),
                   child: LikeToggleButton(
                     selected: data.isFavorite,
                     onPressed: (selected) {
-                      onLiked(data.id, selected);
+                      if (onLiked != null) {
+                        onLiked!(data.id, selected);
+                      }
                     },
                   ))
             ],

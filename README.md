@@ -1,19 +1,12 @@
 # Find Home
 
-A new Flutter project.
+Flutter sample project.  
+Based on this house rental app design by [Mauricio Lopez](https://dribbble.com/m4st3rmiau) : 
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+[![Inspired by ](https://i0.wp.com/figmacrush.com/wp-content/uploads/2020/10/figma-rental-mobile-app-template-1014x487.jpg)](https://www.figmacrush.com/figma-rental-mobile-app-template/)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
 
 
 https://user-images.githubusercontent.com/3540204/145104128-e2218e21-b3d2-401b-b665-b70d4de9a869.mp4

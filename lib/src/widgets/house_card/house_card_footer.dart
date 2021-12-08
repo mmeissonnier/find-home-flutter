@@ -1,4 +1,3 @@
-import 'package:find_home/src/models/home_infos.dart';
 import 'package:find_home/src/models/price.dart';
 import 'package:find_home/src/models/room.dart';
 import 'package:find_home/src/models/user.dart';
@@ -12,7 +11,6 @@ class HouseCardFooter extends StatelessWidget {
   final Price price;
   final String name;
   final ThemeData? theme;
-  final void Function(bool selected)? onPressLike;
 
   const HouseCardFooter(
       {Key? key,
@@ -20,8 +18,7 @@ class HouseCardFooter extends StatelessWidget {
       required this.rooms,
       required this.name,
       required this.price,
-      this.theme,
-      this.onPressLike})
+      this.theme})
       : super(key: key);
 
   @override

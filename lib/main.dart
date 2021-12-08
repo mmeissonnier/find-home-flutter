@@ -26,7 +26,6 @@ class MyApp extends StatelessWidget {
               DefaultCupertinoLocalizations.delegate,
             ],
             title: 'Find Home',
-            initialRoute: '/home',
             routes: {
               '/': (context) => const LoginScreen(),
               '/home': (context) => const CustomScaffold(),

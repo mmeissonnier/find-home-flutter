@@ -5,18 +5,19 @@ import 'package:flutter_svg/flutter_svg.dart';
 class RoomItem extends StatelessWidget {
   final RoomType serviceType;
   final int value;
-  final double? iconSize;
-  final Color? iconColor;
+  final double iconSize;
+  final Color iconColor;
   final TextStyle? textStyle;
 
   RoomItem(
       {Key? key,
       required this.serviceType,
       required this.value,
-      this.iconSize,
+      double? iconSize,
       Color? iconColor,
       this.textStyle})
       : iconColor = iconColor ?? Colors.black38,
+        iconSize = iconSize ?? 14,
         super(key: key);
 
   final serviceAssets = {
@@ -37,7 +38,7 @@ class RoomItem extends StatelessWidget {
           color: iconColor,
         ),
         Padding(
-            padding: const EdgeInsets.only(left: 3),
+            padding: EdgeInsets.only(left: iconSize * 0.3),
             child: Text(
               value.toString(),
               style: textStyle?.copyWith(color: Colors.black38),

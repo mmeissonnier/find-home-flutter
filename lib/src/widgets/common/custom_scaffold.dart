@@ -1,3 +1,4 @@
+import 'package:find_home/src/globals.dart';
 import 'package:find_home/src/screens/details.dart';
 import 'package:find_home/src/screens/home.dart';
 import 'package:find_home/src/utils/transitions.dart';
@@ -22,6 +23,8 @@ class _CustomScaffoldState extends State<CustomScaffold> {
   @override
   Widget build(BuildContext context) {
     return PlatformTabScaffold(
+      cupertino: (_, __) => CupertinoTabScaffoldData(
+          resizeToAvoidBottomInsetTab: false, resizeToAvoidBottomInset: false),
       bodyBuilder: (context, index) => index == 0
           ? HeroControllerScope(
               controller: _heroController,
@@ -46,7 +49,8 @@ class _CustomScaffoldState extends State<CustomScaffold> {
               ))
           : Container(),
       items: items,
-      pageBackgroundColor: Colors.white,
+      tabsBackgroundColor: Colors.white,
+      pageBackgroundColor: themeData.colorScheme.surface,
       tabController: _tabController,
     );
   }
