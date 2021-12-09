@@ -11,8 +11,11 @@ class FormData {
 }
 
 class AuthForm extends StatefulWidget {
+  final bool loading;
+
   const AuthForm({
     Key? key,
+    this.loading = false,
     required this.onSubmit,
   }) : super(key: key);
 
@@ -65,10 +68,17 @@ class _AuthFormState extends State<AuthForm> {
                       originalStyle: true,
                       color: themeData.colorScheme.primary,
                     ),
-                    child: Text(
-                      'Login'.toUpperCase(),
-                      style: themeData.textTheme.button,
-                    ),
+                    child: widget.loading
+                        ? const SizedBox(
+                            width: 30,
+                            height: 30,
+                            child: CircularProgressIndicator(
+                              color: Colors.white,
+                            ))
+                        : Text(
+                            'Login'.toUpperCase(),
+                            style: themeData.textTheme.button,
+                          ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         var data = FormData();

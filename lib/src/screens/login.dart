@@ -6,13 +6,20 @@ import 'package:find_home/src/actions/user.dart';
 import 'package:find_home/src/widgets/auth_form.dart';
 import 'package:find_home/src/globals.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   static final _logo = SvgPicture.asset('assets/logo.svg');
   static final _shape = SvgPicture.asset('assets/home-upper-shape.svg',
       alignment: Alignment.bottomCenter);
   static final _scrollController = ScrollController();
+
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -68,17 +75,22 @@ class LoginScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 40),
                     child: AuthForm(
+                      loading: isLoading,
                       onSubmit: (data) async {
                         try {
+                          setState(() {
+                            isLoading = true;
+                          });
                           await logIn(data.username, data.password);
                           Navigator.pushReplacementNamed(context, '/home');
                         } catch (error) {
+                          setState(() {
+                            isLoading = false;
+                          });
                           showDialog(
                             context: context,
                             builder: (context) {
                               return PlatformAlertDialog(
-                                // Retrieve the text the that user has entered by using the
-                                // TextEditingController.
                                 title: const Text('Error'),
                                 content: Text(error.toString()),
                               );
