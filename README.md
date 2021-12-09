@@ -9,5 +9,7 @@ Based on this house rental app design by [Mauricio Lopez](https://dribbble.com/m
 
 
 
-https://user-images.githubusercontent.com/3540204/145104128-e2218e21-b3d2-401b-b665-b70d4de9a869.mp4
+
+
+https://user-images.githubusercontent.com/3540204/145311646-bc9f3b5a-9cef-456b-8c0f-c6d982710b45.mp4
 
